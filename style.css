@@ -1,7 +1,11 @@
+/* --- 1. CONFIGURACIÓN GLOBAL --- */
 :root {
     --bg: #fafafa;
     --text: #1a1a1a;
     --accent: #555555;
+    --white: #ffffff;
+    --border: #eeeeee;
+    --success: #2ecc71;
 }
 
 * {
@@ -18,7 +22,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Navegación */
+/* --- 2. NAVEGACIÓN --- */
 nav {
     display: flex;
     justify-content: space-between;
@@ -32,8 +36,8 @@ nav {
 }
 
 .links a {
-    text-decoration: none;
-    color: var(--text);
+    text-decoration: none !important; /* Quita subrayado azul */
+    color: var(--text) !important;    /* Quita color azul */
     margin-left: 2rem;
     font-size: 0.9rem;
     transition: opacity 0.3s;
@@ -44,9 +48,10 @@ nav {
     padding-bottom: 4px;
 }
 
-/* Header - El Gancho */
+/* --- 3. HEADER --- */
+
 header {
-    height: 80vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,73 +73,260 @@ h1 {
     line-height: 1.1;
 }
 
-h1 em {
-    font-style: italic;
-    font-weight: 400;
-}
-
-/* Proyectos */
+/* --- 4. SECCIÓN PROYECTOS (EL ENCUADRE) --- */
 #proyectos {
     padding: 5rem 10%;
 }
 
 .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 3rem;
 }
 
-.grid {
+.contenedor-proyectos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 4rem;
+    grid-template-columns: repeat(2, 1fr); /* Fuerza 2 columnas en PC */
+    gap: 40px;
+    align-items: stretch; /* Ambas tarjetas miden lo mismo de alto */
 }
 
 .project-card {
-    cursor: pointer;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column; /* Contenido hacia abajo */
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.img-placeholder {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: #e0e0e0;
-    margin-bottom: 1.5rem;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
 
-.project-card:hover .img-placeholder {
-    transform: scale(0.98);
-    background: #d4d4d4;
+
+
+/* --- 5. TARJETA PRODUCTO (PALA) --- */
+.product-link {
+    text-decoration: none !important;
+    coLor: inherit !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.project-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+.project-info {
+    padding: 30px;
 }
 
-.project-card p {
-    font-size: 0.8rem;
-    text-transform: uppercase;
+.project-info p {
+    font-size: 0.9rem;
     color: var(--accent);
+    margin-bottom: 15px;
+    text-transform: none; /* Quitamos el uppercase para que sea legible */
 }
 
-footer {
-    padding: 5rem 10%;
-    text-align: center;
+.product-image-container {
+    background: #f3f3f3;
+    padding: 30px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    border-radius: 12px;
+}
+
+.product-img {
+    max-height: 90%;
+    width: auto;
+}
+
+.product-details {
+   padding: 25px 30px;
+}
+
+.product-price {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--text);
+}
+
+.product-shipping {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--success) !important; /* Verde en lugar de azul */
+    text-transform: uppercase;
+    text-decoration: none !important;
+}
+
+/* --- 6. TARJETA INVENTARIO (GHOST STYLE) --- */
+
+.inventory-card {
+    padding: 30px !important;
+}
+
+.inventory-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.input-group label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+input {
+
+    border: 1px solid #eee;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.85rem;
+}
+
+.add-btn {
+    background: var(--text);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.table-container {
+    margin-top: 20px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.minimal-table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.minimal-table th {
+    font-size: 0.65rem;
+    color: #bbb;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+
+}
+
+.minimal-table td {
+    padding: 10px 0;
     font-size: 0.8rem;
-    opacity: 0.6;
+    border-bottom: 1px solid #fafafa;
+
 }
 
-/* Sección Sobre Mí */
+
+
+/* --- 7. SOBRE MÍ & SKILLS --- */
 #sobre-mi {
-    padding: 10rem 10% 5rem 10%;
-    background-color: #f0f0f0; /* Un gris muy ligero para diferenciar la sección */
+    padding: 6rem 10%;
+    background-color: #f0f0f0;
+}
+
+
+
+.dashboard-auth-project {
+    background: #ffffff !important;
+    border: 2px solid #1a1a1a !important;
+}
+
+.dashboard-box {
+    padding: 30px;
+    background: #f9f9f9;
+    margin: 20px;
+    border-radius: 12px;
+    text-align: center;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dash-step h4 {
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+.dash-step input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.rating-stars button {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #1a1a1a;
+    background: white;
+    cursor: pointer;
+    border-radius: 50%;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.rating-stars button:hover {
+    background: #1a1a1a;
+    color: white;
+}
+
+.rating-stars .high-rate {
+    border-color: #2ecc71;
+    color: #2ecc71;
+}
+
+.rating-stars .high-rate:hover {
+    background: #2ecc71;
+    color: white;
+}
+/* --- AJUSTE SOBRE MÍ (ESTILO IMAGEN 2) --- */
+
+#sobre-mi {
+    padding: 6rem 10%;
+    background-color: #f0f0f0; /* Gris claro de fondo */
 }
 
 .about-container {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 5rem;
+    grid-template-columns: 1.2fr 0.8fr; /* Crea las dos columnas */
+    gap: 4rem;
     align-items: start;
 }
 
@@ -150,423 +342,109 @@ footer {
     border-bottom: 1px solid var(--accent);
 }
 
-.skills-wrapper h3 {
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-}
-
+/* Contenedor de los botones de Skills */
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: flex-start;
 }
 
+/* Estilo de cada "cajita" de habilidad */
 .skills-grid span {
-    padding: 8px 16px;
+    padding: 10px 20px;
+    background-color: #eeeeee; /* Fondo gris de los botones */
     border: 1px solid #dcdcdc;
     font-size: 0.8rem;
-    letter-spacing: 1px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
+    color: #333;
     transition: all 0.3s ease;
 }
 
 .skills-grid span:hover {
-    background: var(--text);
+    background-color: var(--text);
     color: white;
     border-color: var(--text);
 }
 
-/* Responsivo para móviles */
-@media (max-width: 768px) {
+/* Responsivo: Si se ve en celular, que se ponga una sola columna */
+@media (max-width: 900px) {
     .about-container {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2rem;
     }
 }
-.product-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    cursor: pointer; /* Esto pone la manito en toda la tarjeta */
-}
-
-.product-premium:hover {
-    transform: translateY(-5px);
-    transition: 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-.product-premium {
-    background: #f8f9fa;
-    border: 1px solid #eee;
-    max-width: 350px;
-    transition: all 0.3s ease;
-}
-
-.product-link {
-    text-decoration: none;
-    color: inherit;
-    display: block; /* Importante para que el link ocupe espacio */
-}
-
-.product-image-container {
-    background: #f3f3f3;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.product-img {
-    width: 100%;       /* Ocupa el ancho del contenedor */
-    height: auto;      /* Mantiene la proporción */
-    display: block;    /* Evita espacios en blanco extra */
-}
-
-.product-details {
-    padding: 20px;
-    background: #fff;
-}
-
-.product-price {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.product-title {
-    font-size: 1rem;
-    line-height: 1.2;
-    margin-bottom: 10px;
-}
-
-.product-shipping {
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-/*div number2 
-/* Estilos específicos para la tarjeta de habilidades */
-.skills-bg {
-    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-    height: 250px;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.skills-visual {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-.skill-badge {
-    background: #1a1a1a;
-    color: white;
-    padding: 8px 15px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    border-radius: 2px; /* Cuadrado para seguir la estética Adidas */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.skills-list {
-    margin: 15px 0;
-}
-
-.skill-item {
-    margin-bottom: 12px;
-}
-
-.skill-item span {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #555;
-    display: block;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-}
-
-.skill-bar {
+#sobre-mi {
+    padding: 100px 10% !important; /* Más espacio para que respire */
+    background-color: #f0f0f0 !important;
     width: 100%;
-    height: 4px;
-    background: #eee;
-    border-radius: 2px;
 }
 
-.skill-bar .fill {
-    height: 100%;
-    background: #1a1a1a; /* Barra negra minimalista */
-    border-radius: 2px;
+/* 2. Forzar las dos columnas */
+#sobre-mi .about-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* 50% texto, 50% habilidades */
+    gap: 100px !important;
+    align-items: start !important;
 }
 
-.inventory-card {
-    max-width: 450px !important;
-    border: 1px solid #1a1a1a !important;
-}
-
-.inventory-inputs {
-    display: flex;
-    gap: 5px;
-    margin: 20px 0;
-}
-
-.inventory-inputs input {
-    border: 1px solid #eee;
-    padding: 10px;
-    font-size: 0.7rem;
-    font-family: 'Poppins', sans-serif;
-    outline: none;
-}
-
-.add-btn {
-    background: #1a1a1a;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.7rem;
-}
-
-.table-container {
-    margin-top: 10px;
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-.minimal-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
-
-.minimal-table th {
-    font-size: 0.65rem;
-    letter-spacing: 1px;
-    color: #888;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.minimal-table td {
-    padding: 12px 0;
-    font-size: 0.8rem;
-    border-bottom: 1px solid #fafafa;
-}
-
-.status-warn { color: #ff3b30; font-weight: bold; text-transform: uppercase; font-size: 0.6rem; }
-.status-safe { color: #34c759; font-weight: bold; text-transform: uppercase; font-size: 0.6rem; }
-
-.btn-alerta {
-    background: #ff3b30;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.6rem;
-    font-weight: bold;
-    cursor: pointer;
-    animation: palpitar 1.5s infinite;
-}
-
-@keyframes palpitar {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-.contenedor-proyectos {
-    display: flex;          /* Los pone uno al lado del otro */
-    flex-wrap: wrap;       /* Si la pantalla es pequeña (celular), pone uno abajo del otro */
-    gap: 20px;             /* Espacio exacto entre las dos tarjetas */
-    justify-content: center; /* Los centra en la pantalla */
-    align-items: stretch;   /* HACE QUE MIDAN LO MISMO DE ALTO AUTOMÁTICAMENTE */
-    padding: 20px;
-}
-
-.project-card {
-    flex: 1;               /* Hace que ambas tarjetas crezcan igual para ocupar el espacio */
-    min-width: 320px;      /* Evita que se encojan demasiado */
-    max-width: 450px;      /* Evita que se vean gigantes en pantallas muy anchas */
-    display: flex;
-    flex-direction: column; /* Organiza el contenido interno hacia abajo */
-}
-
-/* --- INVENTORY CARD: MINIMALISMO PREMIUM --- */
-
-/* --- INVENTORY CARD: MINIMALISMO PREMIUM --- */
-
-.inventory-card {
-    background: #ffffff;
-    border: 1px solid #e1e1e1 !important; /* Borde muy sutil */
-    border-radius: 12px; /* Esquinas suavizadas */
-    padding: 32px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* Sombra casi invisible */
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.inventory-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-    transform: translateY(-4px);
-}
-
-/* Título con estilo editorial */
-.inventory-card .product-title {
+/* 3. Estilo del Texto (Izquierda) */
+.about-text h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: #1a1a1a;
-    margin-bottom: 24px;
-    border: none; /* Quitamos la línea para que sea más limpio */
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
 }
 
-/* Organización de los inputs */
-.inventory-card .inventory-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.inventory-card .input-row {
-    display: flex;
-    gap: 16px;
-}
-
-.inventory-card .input-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-/* Etiquetas minimalistas */
-.inventory-card .input-group label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #a0a0a0;
-    margin-bottom: 8px;
-    letter-spacing: 1.2px;
-}
-
-/* Inputs con estilo "Ghost" */
-.inventory-card input {
-    border: 1px solid #efefef;
-    background: #f9f9f9;
-    padding: 14px;
-    font-size: 0.85rem;
-    border-radius: 6px;
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
     color: #333;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
 }
 
-.inventory-card input:focus {
-    outline: none;
-    background: #fff;
-    border-color: #1a1a1a;
-    box-shadow: 0 0 0 4px rgba(0,0,0,0.02);
+/* 4. Estilo de las Habilidades (Derecha) */
+.skills-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    justify-content: flex-start !important;
 }
 
-/* Botón sólido y elegante */
-.inventory-card .add-btn {
-    background: #1a1a1a;
-    color: #fff;
-    border: none;
-    padding: 16px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 600;
+.skills-grid span {
+    background-color: #e8e8e8 !important; /* Gris clarito */
+    padding: 12px 20px !important;
+    font-size: 0.75rem !important;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
-
-.inventory-card .add-btn:hover {
-    background: #000;
-    letter-spacing: 3px; /* Efecto sutil al pasar el mouse */
-}
-
-/* Tabla refinada */
-.inventory-card .table-container {
-    margin-top: 32px;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-}
-
-.inventory-card .minimal-table th {
-    font-size: 0.6rem;
-    color: #bbb;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding-bottom: 12px;
-}
-
-.inventory-card .minimal-table td {
-    padding: 16px 0;
-    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border: 1px solid #ddd !important;
     color: #444;
-    border-bottom: 1px solid #fcfcfc;
+    display: inline-block;
 }
 
-/* Estados de color sutiles */
-.status-warn { 
-    color: #d9534f; 
-    font-weight: 700; 
-    font-size: 0.65rem; 
-    background: rgba(217, 83, 79, 0.1);
-    padding: 4px 8px;
-    border-radius: 4px;
+/* 5. Footer Centrado y con aire */
+footer {
+    padding: 60px 10% !important;
+    text-align: center !important;
+    background-color: #f0f0f0 !important; /* Mismo gris que el fondo de arriba */
+    width: 100%;
 }
 
-.status-safe { 
-    color: #2ecc71; 
-    font-weight: 700; 
-    font-size: 0.65rem;
-    background: rgba(46, 204, 113, 0.1);
-    padding: 4px 8px;
-    border-radius: 4px;
-}
-
-/* Mensaje de sistema inferior */
-.inventory-card #mensaje-alerta {
-    margin-top: 24px;
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: #ccc;
-    text-align: center;
+footer p {
+    font-size: 0.8rem !important;
+    color: #888 !important;
     letter-spacing: 1px;
-    text-transform: uppercase;
 }
 
-.btn-alerta {
-    background: #ff3b30; /* Rojo vibrante */
-    color: white !important;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
-    animation: palpitar 1.5s infinite;
-    transition: all 0.3s ease;
-}
-
-.btn-alerta:hover {
-    background: #d32f2f;
-    transform: scale(1.05);
-}
-
-@keyframes palpitar {
-    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3); }
-    50% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(255, 59, 48, 0.5); }
-    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3); }
+/* 6. Responsivo para Celulares (Se vuelve una sola columna) */
+@media (max-width: 768px) {
+    #sobre-mi .about-container {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+    
+    #sobre-mi {
+        padding: 60px 10% !important;
+    }
 }

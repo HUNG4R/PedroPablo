@@ -19,95 +19,130 @@
     </nav>
 
     <header>
+    <div class="header-content">
         <p class="tagline">Junior Web Developer & Designer</p>
         <h1>Creando <em>experiencias</em> digitales con clase.</h1>
-    </header>
+    </div>
+    
+    <div class="header-avatar"></div> 
+</header>
 
     <section id="proyectos">
-        
-        <h2 class="section-title">Proyectos Seleccionados</h2>
-        <section id="proyectos">
-    <div class="contenedor-proyectos"> <div class="project-card product-premium">
-            <a href="https://api.whatsapp.com/send?phone=..." target="_blank" class="product-link">
+    <h2 class="section-title">Proyectos Seleccionados</h2>
+    
+    <div class="contenedor-proyectos">
+    <div class="project-card product-premium" onclick="comprarProducto('Raqueta Adidas Metalbone 2026')">
+        <a href="#" class="product-link" onclick="event.preventDefault();">
+            <div class="project-info">
+                <span class="badge">E-commerce</span>
+                <h3>Gestión de Pedidos WhatsApp</h3>
+                <p>Una solución elegante para convertir catálogos en ventas directas. Menos clics, más conversiones.</p>
+                <div class="tech-tags">
+                    <span>HTML5</span> <span>CSS3</span> <span>JS</span>
+                </div>
+            </div>
+
+            <a href="https://wa.me/57..." target="_blank" class="product-link">
                 <div class="product-image-container">
                     <span class="heart-icon">♡</span>
                     <img src="IMG/PALA.jpeg" alt="Pala Adidas" class="product-img">
                 </div>
                 <div class="product-details">
                     <p class="product-price">$1.599.950</p>
-                    <h3 class="product-title">Raqueta de Padel METALBONE HRD+ 2026</h3>
-                    <p class="product-shipping">Envío Gratis</p>
+                    <h4 class="product-title">Raqueta de Padel METALBONE HRD+ 2026</h4>
+                    <p class="product-shipping">Envío Express Gratis</p>
                 </div>
             </a>
         </div>
 
         <div class="project-card product-premium inventory-card">
-    <div class="product-details">
-        <h3 class="product-title">Gestión de Stock</h3>
-        
-        <div class="inventory-inputs">
-            <div class="input-row">
-                <div class="input-group">
-                    <input type="text" id="p-nombre" placeholder="Producto (ej: Gatorade)">
-                </div>
-                <div class="input-group" style="max-width: 100px;">
-                    <input type="number" id="p-cantidad" placeholder="Cant.">
-                </div>
-            </div>
+            <div class="product-details">
+                <h3 class="product-title">Gestión de Stock</h3>
+                <p>Sistema de Gestión de Inventarios. Permite gestionar entradas, salidas y visualizar disponibilidad de forma sencilla.</p>
+                
+                <div class="inventory-inputs">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" id="p-nombre" placeholder="Producto">
+                        </div>
+                        <div class="input-group" style="max-width: 80px;">
+                            <input type="number" id="p-cantidad" placeholder="Cant.">
+                        </div>
+                    </div>
 
-            <div class="input-row">
-                <div class="input-group">
-                    <label for="p-fecha-llegada">Fecha de Llegada</label>
-                    <input type="date" id="p-fecha-llegada">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Llegada</label>
+                            <input type="date" id="p-fecha-llegada">
+                        </div>
+                        <div class="input-group">
+                            <label>Vence</label>
+                            <input type="date" id="p-fecha-vence">
+                        </div>
+                    </div>
+                    
+                    <button onclick="agregarAlInventario()" class="add-btn">Registrar Entrada</button>
                 </div>
-                <div class="input-group">
-                    <label for="p-fecha-vence">Fecha de Vencimiento</label>
-                    <input type="date" id="p-fecha-vence">
+
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>PRODUCTO</th>
+                                <th>VENCE</th>
+                                <th>ESTADO</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-cuerpo"></tbody>
+                    </table>
                 </div>
+                <p id="mensaje-alerta" class="product-shipping" style="text-align: center; margin-top: 15px;">SISTEMA DE MONITOREO ACTIVO</p>
             </div>
-            
-            <button onclick="agregarAlInventario()" class="add-btn">Registrar Entrada</button>
+        </div>
+        <div class="project-card dashboard-auth-project">
+    <div class="project-info">
+        <span class="badge">SaaS & Marketing</span>
+        <h3>Portal de Feedback Inteligente</h3>
+        <p>Dashboard con validación de acceso y sistema de conversión de clientes mediante calificación.</p>
+    </div>
+
+    <div class="dashboard-box">
+        <div id="dash-registro" class="dash-step">
+            <h4>Registra tu visita</h4>
+            <input type="text" id="db-nombre" placeholder="Nombre completo">
+            <input type="email" id="db-correo" placeholder="Correo corporativo">
+            <button onclick="registrarYContinuar()" class="add-btn">Acceder al Dashboard</button>
         </div>
 
-        <div class="table-container">
-            <table class="minimal-table">
-                <thead>
-                    <tr>
-                        <th>PRODUCTO</th>
-                        <th>VENCE</th>
-                        <th>ESTADO</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-cuerpo"></tbody>
-            </table>
+        <div id="dash-feedback" class="dash-step" style="display: none;">
+            <h4 id="saludo-personalizado"></h4>
+            <p>¿Qué te parece mi portafolio hasta ahora?</p>
+            <div class="rating-stars">
+                <button onclick="calificar(1)">1</button>
+                <button onclick="calificar(2)">2</button>
+                <button onclick="calificar(3)">3</button>
+                <button onclick="calificar(4)" class="high-rate">4</button>
+                <button onclick="calificar(5)" class="high-rate">5</button>
+            </div>
+            <p id="feedback-msg" style="margin-top: 10px; font-weight: bold;"></p>
         </div>
-        <div id="contenedor-alerta" style="text-align: center; margin-top: 20px;">
-    <p id="mensaje-alerta" class="product-shipping">SISTEMA DE MONITOREO ACTIVO</p>
-</div>
     </div>
 </div>
-</div>
-
     </div> </section>
-</div>
-        </div>
-    </div>
-        </div>
-    </div>
-</div>
-    </section>
 
     <section id="sobre-mi">
-        <div class="about-container">
-            <div class="about-text">
-                <h2 class="section-title">Sobre mí</h2>
-                <p>
+    <div class="about-container">
+        <div class="about-text">
+            <h2 class="section-title">Sobre mí</h2>
+            <p>
                 Soy un desarrollador junior apasionado por la intersección entre la <strong>estética visual</strong> y la <strong>funcionalidad técnica</strong>. Mi enfoque se centra en crear interfaces limpias que no solo se vean bien, sino que se sientan naturales al usarlas.
             </p>
             <p>
                 No solo escribo código; diseño soluciones. Creo firmemente que el minimalismo no es la ausencia de elementos, sino la gestión perfecta del espacio.
             </p>
-            </div>
+        </div>
+
+        <div class="skills-wrapper">
             <div class="skills-grid">
                 <span>HTML5</span>
                 <span>CSS3 (Sass)</span>
@@ -119,10 +154,9 @@
                 <span>Canva</span>
                 <span>Ofimaticas</span>
             </div>
-            </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <footer>
         <p>© 2026 — Edwin Portfolio. Menos es más.</p>
     </footer>
