@@ -594,3 +594,64 @@ footer p {
     font-size: 0.6rem;
     color: #666;
 }
+/* Sección de Próxima Fase con estilo minimalista */
+.future-roadmap {
+    grid-column: 1 / -1;
+    padding: 45px 20px;
+    background-color: #fcfcfc; /* Un gris casi blanco para diferenciarlo del resto */
+    border-top: 1px solid #eeeeee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    border-radius: 0 0 15px 15px;
+}
+
+.future-roadmap p {
+    text-align: center;
+    max-width: 450px;
+    color: #666666; /* Gris oscuro para lectura cómoda */
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.future-roadmap strong {
+    color: #1a1a1a; /* Negro puro para jerarquía */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* El botón de WhatsApp estilo "Negro Sólido" */
+.btn-wpp-mini {
+    background-color: #1a1a1a; /* Negro sólido */
+    color: #ffffff !important;
+    border: 1px solid #1a1a1a;
+    padding: 14px 35px;
+    border-radius: 4px; /* Bordes menos redondeados para verse más técnico/minimalista */
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-wpp-mini:hover {
+    background-color: transparent;
+    color: #1a1a1a !important;
+    box-shadow: none;
+    transform: translateY(-2px);
+    border: 1px solid #1a1a1a; /* Se vuelve estilo outline al pasar el mouse */
+}
+
+/* Estilo para las etiquetas de código en gris neutro */
+.future-roadmap code {
+    background: #f0f0f0;
+    color: #333;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+}
