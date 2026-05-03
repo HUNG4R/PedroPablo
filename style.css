@@ -655,3 +655,66 @@ footer p {
     border-radius: 3px;
     font-size: 0.85rem;
 }
+
+/* --- OPTIMIZACIÓN TARJETA PROYECTO --- */
+
+.project-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.tech-tags {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tech-tags span {
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
+/* --- BOTONES DE PROYECTO --- */
+.project-links {
+    display: flex;
+    gap: 15px;
+    margin-top: auto; /* Empuja los botones al fondo de la tarjeta */
+}
+
+.link-btn {
+    text-decoration: none !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: 0.3s;
+    border: 1px solid var(--text);
+    color: var(--text) !important;
+    display: inline-block;
+}
+
+.link-btn.primary {
+    background-color: var(--text);
+    color: white !important;
+}
+
+.link-btn:hover {
+    background-color: var(--text);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+.link-btn.primary:hover {
+    background-color: transparent;
+    color: var(--text) !important;
+}
+
+/* Ajuste para que la tarjeta no se vea apretada */
+.project-card {
+    min-height: 450px;
+    justify-content: space-between;
+}
